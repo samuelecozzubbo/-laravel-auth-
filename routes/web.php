@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//ROTTE GUEST
+
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,4 +28,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+//ROTTE ADMIN
+Route::middleware(['auth', 'verified'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        //group accetta una funzione di callback dove metto le rotte CRUD
+        Route::get('/', [DashboardController::class, 'index'])->name('home');
+        // Modifico dentro routeserverprovider la rotta di default da dashboard ad home
+
+    });
+
+
+require __DIR__ . '/auth.php';
