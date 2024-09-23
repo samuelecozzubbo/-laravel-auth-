@@ -20,7 +20,7 @@
                     <td>{{ $project->start_date }}</td>
                     <td>{{ $project->end_date }}</td>
                     <td>
-                        <a href="#" class="btn btn-info">
+                        <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-info">
                             <i class="fa-solid fa-eye"></i>
                         </a>
                         <a href="#" class="btn btn-warning">
