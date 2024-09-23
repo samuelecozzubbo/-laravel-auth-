@@ -2,6 +2,12 @@
 
 @section('content')
     <h1>Elenco progetti</h1>
+
+    @if (session('cancelled'))
+        <p class="text-success">L'elemento è stato eliminato correttamente</p>
+    @endif
+
+
     <table class="table">
         <thead>
             <tr>
@@ -26,7 +32,7 @@
                         <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
-                        <form class="d-inline" action="#" method="POST">
+                        <form class="d-inline" action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash"></i></button>
