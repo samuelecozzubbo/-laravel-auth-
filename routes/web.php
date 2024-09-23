@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -38,7 +38,7 @@ Route::middleware(['auth', 'verified'])
         // Modifico dentro routeserverprovider la rotta di default da dashboard ad home
 
         //ROTTE ADMIN CRUD
-        Route::resource('posts', ProjectController::class);
+        Route::resource('projects', ProjectController::class);
     });
 
 

@@ -25,9 +25,13 @@
 <body>
     <div id="app">
         @include('admin.partials.header')
-        <div class="content p-3">
-            @yield('content')
+        <div class="main-wrapper d-flex">
+            @include('admin.partials.aside')
+            <div class="content">
+                @yield('content')
+            </div>
         </div>
+
 
     </div>
 </body>
