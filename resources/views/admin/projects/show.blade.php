@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        @if (@session('message'))
+            <div class="alert alert-success">{{ session('message') }}</div>
+        @endif
         <h1>{{ $project->title }}</h1>
         <p>Description: {{ $project->description }}</p>
         <p>Start Date: {{ $project->start_date }}</p>

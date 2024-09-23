@@ -23,7 +23,7 @@
                         <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-info">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        <a href="#" class="btn btn-warning">
+                        <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
                         <form class="d-inline" action="#" method="POST">
